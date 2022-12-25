@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pallery/app/routes.dart';
 import 'package:pallery/gen/assets.gen.dart';
 import 'package:rive/rive.dart';
 
@@ -46,6 +48,10 @@ class _OnBoardingViewState extends State<OnBoardingView>
     scaledController.dispose();
     textAnimationController.dispose();
     super.dispose();
+  }
+
+  void onGetStartedPressed() {
+    context.go(RouteName.productList.value);
   }
 
   @override
@@ -146,7 +152,7 @@ class _OnBoardingViewState extends State<OnBoardingView>
               alignment: Alignment.center,
               child: scaleRatio == 1
                   ? InkWell(
-                      onTap: () {},
+                      onTap: onGetStartedPressed,
                       child: const Text(
                         'Get Started',
                         style: TextStyle(
