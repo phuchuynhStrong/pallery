@@ -26,8 +26,8 @@ class ProductListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
           gradient: CustomGradients.cleanMirror,
         ),
         child: SafeArea(
