@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pallery/app/routes.dart';
 import 'package:pallery/gen/assets.gen.dart';
+import 'package:pallery/l10n/l10n.dart';
 import 'package:rive/rive.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -51,7 +52,7 @@ class _OnBoardingViewState extends State<OnBoardingView>
   }
 
   void onGetStartedPressed() {
-    context.go(RouteName.productList.value);
+    context.goNamed(RouteName.productList.value);
   }
 
   @override
@@ -153,9 +154,9 @@ class _OnBoardingViewState extends State<OnBoardingView>
               child: scaleRatio == 1
                   ? InkWell(
                       onTap: onGetStartedPressed,
-                      child: const Text(
-                        'Get Started',
-                        style: TextStyle(
+                      child: Text(
+                        context.l10n.getStarted,
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),

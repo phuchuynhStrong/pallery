@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pallery/service/database_service.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -24,6 +25,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   };
 
   Bloc.observer = AppBlocObserver();
+
+  final DatabaseService service = IsarDbService();
+  await service.init();
 
   await runZonedGuarded(
     () async => runApp(await builder()),
