@@ -1,11 +1,11 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:isar/isar.dart';
-import 'package:pallery/settings/data/enums.dart';
+import 'package:pallery/model/setting/enums.dart';
 
 part 'setting_data.g.dart';
 
-@collection
+@Collection(inheritance: false)
 @CopyWith()
 class AppSettings extends Equatable {
   const AppSettings({
@@ -18,28 +18,30 @@ class AppSettings extends Equatable {
   final CommonSettingsSectionData? common;
   final DisplaySettingsSectionData? display;
 
+  @ignore
   @override
   List<Object?> get props => [id, common, display];
 }
 
-@embedded
+@Embedded(inheritance: false)
 class CommonSettingsSectionData extends Equatable {
   const CommonSettingsSectionData({this.notification});
   final bool? notification;
 
+  @ignore
   @override
   List<Object?> get props => [notification];
 }
 
-@embedded
+@Embedded(inheritance: false)
 class DisplaySettingsSectionData extends Equatable {
   DisplaySettingsSectionData({
     this.language,
-    FontSizeSetting? fontsize,
-    DarkThemeSetting? darkTheme,
+    FontSizeSetting? fontSize,
+    DarkThemeSetting? theme,
   }) {
-    this.fontsize = fontsize ?? FontSizeSetting.small;
-    this.darkTheme = darkTheme ?? DarkThemeSetting.dark;
+    fontsize = fontSize ?? FontSizeSetting.small;
+    darkTheme = theme ?? DarkThemeSetting.dark;
   }
   final String? language;
   @enumerated
@@ -47,6 +49,7 @@ class DisplaySettingsSectionData extends Equatable {
   @enumerated
   late final DarkThemeSetting darkTheme;
 
+  @ignore
   @override
   List<Object?> get props => [language, fontsize, darkTheme];
 }

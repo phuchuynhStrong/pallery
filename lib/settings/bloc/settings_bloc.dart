@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pallery/settings/data/enums.dart';
-import 'package:pallery/settings/data/setting_data.dart';
+import 'package:pallery/model/setting/setting.dart';
 
 class SettingsState extends Equatable {
   const SettingsState({required this.value});
@@ -48,8 +47,8 @@ class SettingsBloc extends Bloc<SettingEvent, SettingsState> {
           final newState = SettingsState(
             value: state.value.copyWith(
               display: DisplaySettingsSectionData(
-                fontsize: event.value as FontSizeSetting,
-                darkTheme: state.value.display?.darkTheme,
+                fontSize: event.value as FontSizeSetting,
+                theme: state.value.display?.darkTheme,
                 language: state.value.display?.language,
               ),
             ),
@@ -60,8 +59,8 @@ class SettingsBloc extends Bloc<SettingEvent, SettingsState> {
           final newState = SettingsState(
             value: state.value.copyWith(
               display: DisplaySettingsSectionData(
-                fontsize: state.value.display?.fontsize,
-                darkTheme: state.value.display?.darkTheme,
+                fontSize: state.value.display?.fontsize,
+                theme: state.value.display?.darkTheme,
                 language: event.value.toString(),
               ),
             ),
@@ -72,8 +71,8 @@ class SettingsBloc extends Bloc<SettingEvent, SettingsState> {
           final newState = SettingsState(
             value: state.value.copyWith(
               display: DisplaySettingsSectionData(
-                fontsize: state.value.display?.fontsize,
-                darkTheme: event.value as DarkThemeSetting,
+                fontSize: state.value.display?.fontsize,
+                theme: event.value as DarkThemeSetting,
                 language: state.value.display?.language,
               ),
             ),

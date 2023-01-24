@@ -1,5 +1,5 @@
+import 'package:pallery/model/setting/setting.dart';
 import 'package:pallery/service/database_service.dart';
-import 'package:pallery/settings/data/setting_data.dart';
 
 class SettingsRepository {
   factory SettingsRepository({IsarDbService? service}) {

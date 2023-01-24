@@ -1,9 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:pallery/model/setting/setting.dart';
 import 'package:pallery/repository/settings_repository.dart';
 import 'package:pallery/service/database_service.dart';
-import 'package:pallery/settings/data/enums.dart';
-import 'package:pallery/settings/data/setting_data.dart';
 
 class MockDbService extends Mock implements IsarDbService {}
 

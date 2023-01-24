@@ -3,7 +3,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pallery/app/env.dart';
 import 'package:pallery/service/database_service.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -29,8 +31,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   final DatabaseService service = IsarDbService();
   await service.init();
 
-  await runZonedGuarded(
-    () async => runApp(await builder()),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  await SentryFlutter.init(
+    (options) {
+      options
+        ..dsn = Env.sentryDsn
+        ..tracesSampleRate = 1.0;
+    },
+    appRunner: () async => runApp(await builder()),
   );
 }

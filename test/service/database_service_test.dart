@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
+import 'package:pallery/model/setting/setting.dart';
 import 'package:pallery/service/database_service.dart';
-import 'package:pallery/settings/data/setting_data.dart';
 
 void main() {
   group('Isar Database Service', () {

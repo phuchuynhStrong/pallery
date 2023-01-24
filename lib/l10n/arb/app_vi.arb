@@ -1,0 +1,15 @@
+{
+    "@@locale": "vi",
+    "counterAppBarTitle": "Bộ đếm ngược",
+    "@counterAppBarTitle": {
+        "description": "Chữ được hiển thị trong AppBar của trang đếm ngược"
+    },
+    "getStarted": "Bắt đầu",
+    "gallery": "Thư viện",
+    "settings": "Cài đặt",
+    "help": "Trợ giúp",
+    "language": "Ngôn Ngữ",
+    "notification": "Thông báo",
+    "fontsize": "Cỡ chữ",
+    "darkTheme": "Giao diện ban đêm"
+}

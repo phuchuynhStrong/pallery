@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pallery/app/colors.dart';
-import 'package:pallery/app/dimens.dart';
 import 'package:pallery/l10n/l10n.dart';
+import 'package:pallery/model/setting/setting.dart';
 import 'package:pallery/settings/bloc/settings_bloc.dart';
-import 'package:pallery/settings/data/data.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 class SettingsPage extends StatelessWidget {

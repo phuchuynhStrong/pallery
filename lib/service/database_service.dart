@@ -1,5 +1,5 @@
 import 'package:isar/isar.dart';
-import 'package:pallery/settings/data/setting_data.dart';
+import 'package:pallery/model/setting/setting.dart';
 
 abstract class DatabaseService {
   Future<void> init();

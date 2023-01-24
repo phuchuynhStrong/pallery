@@ -1,8 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pallery/model/setting/setting.dart';
 import 'package:pallery/settings/bloc/settings_bloc.dart';
-import 'package:pallery/settings/data/enums.dart';
-import 'package:pallery/settings/data/setting_data.dart';
 
 void main() {
   group('Settings Bloc', () {
@@ -32,7 +31,7 @@ void main() {
             common: const CommonSettingsSectionData(notification: false),
             display: DisplaySettingsSectionData(
               language: 'en',
-              fontsize: FontSizeSetting.large,
+              fontSize: FontSizeSetting.large,
             ),
           ),
         ),
@@ -41,7 +40,7 @@ void main() {
             common: const CommonSettingsSectionData(notification: false),
             display: DisplaySettingsSectionData(
               language: 'vi',
-              fontsize: FontSizeSetting.large,
+              fontSize: FontSizeSetting.large,
             ),
           ),
         ),
@@ -50,8 +49,8 @@ void main() {
             common: const CommonSettingsSectionData(notification: false),
             display: DisplaySettingsSectionData(
               language: 'vi',
-              darkTheme: DarkThemeSetting.light,
-              fontsize: FontSizeSetting.large,
+              theme: DarkThemeSetting.light,
+              fontSize: FontSizeSetting.large,
             ),
           ),
         ),

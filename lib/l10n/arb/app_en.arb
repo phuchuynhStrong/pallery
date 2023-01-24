@@ -3,5 +3,13 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
-    }
+    },
+    "getStarted": "Get Started",
+    "gallery": "Gallery",
+    "settings": "Settings",
+    "help": "Help",
+    "language": "Language",
+    "notification": "Notification",
+    "fontsize": "Font Size",
+    "darkTheme": "Dark Theme"
 }
