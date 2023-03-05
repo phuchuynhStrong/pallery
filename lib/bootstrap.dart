@@ -28,8 +28,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = AppBlocObserver();
 
-  final DatabaseService service = IsarDbService();
-  await service.init();
+  await IsarDbService.instance().init();
 
   await SentryFlutter.init(
     (options) {

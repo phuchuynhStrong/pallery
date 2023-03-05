@@ -25,6 +25,7 @@ dependencies:
   intl: ^0.17.0
   isar: ^3.0.5
   isar_flutter_libs: ^3.0.5
+  logger: ^1.2.2
   rive: ^0.10.0
   sentry_flutter: ^6.18.2
   settings_ui: ^2.0.2
