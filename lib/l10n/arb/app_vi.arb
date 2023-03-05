@@ -11,5 +11,12 @@
     "language": "Ngôn Ngữ",
     "notification": "Thông báo",
     "fontsize": "Cỡ chữ",
-    "darkTheme": "Giao diện ban đêm"
+    "darkTheme": "Giao diện ban đêm",
+    "display": "Hiển thị",
+    "common": "Khác",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "fontsizeSmall": "Nhỏ",
+    "fontsizeMedium": "Vừa",
+    "fontsizeLarge": "Lớn"
 }

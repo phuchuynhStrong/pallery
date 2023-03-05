@@ -11,5 +11,12 @@
     "language": "Language",
     "notification": "Notification",
     "fontsize": "Font Size",
-    "darkTheme": "Dark Theme"
+    "darkTheme": "Dark Theme",
+    "display": "Display",
+    "common": "Common",
+    "english": "English",
+    "vietnamese": "Vietnamese",
+    "fontsizeSmall": "Small",
+    "fontsizeMedium": "Medium",
+    "fontsizeLarge": "Large"
 }
