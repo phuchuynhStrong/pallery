@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pallery/app/colors.dart';
@@ -28,10 +27,46 @@ class SettingsView extends StatelessWidget {
   const SettingsView({super.key, required this.state});
   final SettingsState state;
 
+  SettingsTile getTile(BuildContext context, SettingMenu menu) {
+    final settingsBloc = context.watch<SettingsBloc>();
+    Widget leading;
+    Widget value;
+    final Widget title = Text(menu.tr(context));
+    switch (menu) {
+      case SettingMenu.language:
+        leading = const Icon(Icons.language);
+        value = Text(settingsBloc.getSettingValue(context, menu).toString());
+        break;
+      case SettingMenu.fontsize:
+        leading = const Icon(Icons.format_size);
+        value = Text(settingsBloc.getSettingValue(context, menu).toString());
+        break;
+      case SettingMenu.darkTheme:
+        return SettingsTile.switchTile(
+          initialValue: settingsBloc.getSettingValue(context, menu) == true,
+          onToggle: (val) => settingsBloc.saveSetting(menu, val),
+          title: title,
+        );
+      case SettingMenu.notification:
+        return SettingsTile.switchTile(
+          initialValue: settingsBloc.getSettingValue(context, menu) == true,
+          onToggle: (val) => settingsBloc.saveSetting(menu, val),
+          title: title,
+        );
+    }
+
+    return SettingsTile(
+      title: title,
+      leading: leading,
+      value: value,
+      onPressed: (context) => settingsBloc.openSubSetting(context, menu),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final settingsBloc = context.read<SettingsBloc>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.settings),
@@ -45,36 +80,17 @@ class SettingsView extends StatelessWidget {
               child: SettingsList(
                 sections: [
                   SettingsSection(
-                    title: Text('Display'),
+                    title: Text(l10n.display),
                     tiles: [
-                      SettingsTile(
-                        leading: Icon(Icons.language),
-                        title: Text('Language'),
-                        value: Text('English'),
-                        onPressed: (context) {},
-                      ),
-                      SettingsTile(
-                        leading: Icon(Icons.format_size),
-                        title: Text('Font size'),
-                        value: Text('Small'),
-                        onPressed: (context) {},
-                      ),
-                      SettingsTile.switchTile(
-                        leading: Icon(Icons.dark_mode),
-                        title: Text('Dark Theme'),
-                        initialValue: false,
-                        onToggle: (value) {},
-                      ),
+                      getTile(context, SettingMenu.language),
+                      getTile(context, SettingMenu.fontsize),
+                      getTile(context, SettingMenu.darkTheme),
                     ],
                   ),
                   SettingsSection(
-                    title: Text('Common'),
+                    title: Text(l10n.common),
                     tiles: [
-                      SettingsTile.switchTile(
-                        initialValue: true,
-                        onToggle: (val) {},
-                        title: Text('Notifications'),
-                      ),
+                      getTile(context, SettingMenu.notification),
                     ],
                   ),
                 ],
@@ -98,31 +114,10 @@ class SettingItemView extends StatelessWidget {
   final bool readOnly;
   final dynamic value;
 
-  Widget trailing() {
-    switch (value.runtimeType) {
-      case String:
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(value.toString()),
-            if (!readOnly) const Icon(Icons.chevron_right),
-          ],
-        );
-      case bool:
-        return CupertinoSwitch(
-          value: value as bool,
-          onChanged: (value) {},
-        );
-      default:
-        return const SizedBox();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return SettingsTile(
       title: Text(menu.tr(context)),
-      trailing: trailing(),
     );
   }
 }

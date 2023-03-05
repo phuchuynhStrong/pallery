@@ -9,8 +9,9 @@ void main() {
 
     setUp(() async {
       await Isar.initializeIsarCore(download: true);
-      databaseService = IsarDbService();
+      databaseService = IsarDbService.instance();
       await databaseService.init();
+      await databaseService.clear();
     });
 
     tearDown(() {
@@ -23,7 +24,7 @@ void main() {
     });
 
     test('Save app settings', () async {
-      await databaseService.saveAppSettings(AppSettings());
+      await databaseService.saveAppSettings(AppSettings.get());
       final res = await databaseService.get<AppSettings>();
       expect(res, isNotNull);
     });

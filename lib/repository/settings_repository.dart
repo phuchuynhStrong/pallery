@@ -12,7 +12,7 @@ class SettingsRepository {
 
   IsarDbService? _dbService;
 
-  IsarDbService get dbService => _dbService ??= IsarDbService();
+  IsarDbService get dbService => _dbService ??= IsarDbService.instance();
 
   static final SettingsRepository _instance = SettingsRepository._internal();
 
@@ -23,8 +23,8 @@ class SettingsRepository {
     return dbService.getAppSettings().then((value) {
       if (value == null) {
         return AppSettings(
-          common: CommonSettingsSectionData(notification: true),
-          display: DisplaySettingsSectionData(language: 'en'),
+          common: const CommonSettingsSectionData(notification: true),
+          display: DisplaySettingsSectionData.get(language: 'en'),
         );
       }
       return value;

@@ -10,13 +10,21 @@ part 'setting_data.g.dart';
 class AppSettings extends Equatable {
   const AppSettings({
     this.id,
-    this.common,
-    this.display,
+    required this.common,
+    required this.display,
   });
+
+  factory AppSettings.get() {
+    return AppSettings(
+      common: const CommonSettingsSectionData(),
+      display: DisplaySettingsSectionData.get(),
+    );
+  }
+
   final Id? id;
 
-  final CommonSettingsSectionData? common;
-  final DisplaySettingsSectionData? display;
+  final CommonSettingsSectionData common;
+  final DisplaySettingsSectionData display;
 
   @ignore
   @override
@@ -37,12 +45,18 @@ class CommonSettingsSectionData extends Equatable {
 class DisplaySettingsSectionData extends Equatable {
   DisplaySettingsSectionData({
     this.language,
+  });
+
+  factory DisplaySettingsSectionData.get({
     FontSizeSetting? fontSize,
-    DarkThemeSetting? theme,
+    DarkThemeSetting? darkTheme,
+    String? language,
   }) {
-    fontsize = fontSize ?? FontSizeSetting.small;
-    darkTheme = theme ?? DarkThemeSetting.dark;
+    return DisplaySettingsSectionData(language: language)
+      ..fontsize = fontSize ?? FontSizeSetting.small
+      ..darkTheme = darkTheme ?? DarkThemeSetting.dark;
   }
+
   final String? language;
   @enumerated
   late final FontSizeSetting fontsize;

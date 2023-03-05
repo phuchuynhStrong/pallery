@@ -19,6 +19,8 @@ class _OnBoardingViewState extends State<OnBoardingView>
   late final AnimationController scaledController;
   late final AnimationController textAnimationController;
 
+  String? id;
+
   @override
   void initState() {
     scaledController = AnimationController(
@@ -41,6 +43,7 @@ class _OnBoardingViewState extends State<OnBoardingView>
     )..addListener(() {
         setState(() {});
       });
+
     super.initState();
   }
 
@@ -52,7 +55,7 @@ class _OnBoardingViewState extends State<OnBoardingView>
   }
 
   void onGetStartedPressed() {
-    context.goNamed(RouteName.productList.value);
+    context.pushNamed(RouteName.productList.value);
   }
 
   @override
@@ -154,10 +157,13 @@ class _OnBoardingViewState extends State<OnBoardingView>
               child: scaleRatio == 1
                   ? InkWell(
                       onTap: onGetStartedPressed,
-                      child: Text(
-                        context.l10n.getStarted,
-                        style: const TextStyle(
-                          color: Colors.white,
+                      child: Hero(
+                        tag: 'hero',
+                        child: Text(
+                          context.l10n.getStarted,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     )

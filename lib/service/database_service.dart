@@ -9,6 +9,12 @@ abstract class DatabaseService {
 }
 
 class IsarDbService extends DatabaseService {
+  factory IsarDbService.instance() => _instance;
+
+  IsarDbService._internal();
+
+  static final IsarDbService _instance = IsarDbService._internal();
+
   Isar? isar;
   @override
   Future<T?> get<T>() async {
@@ -23,7 +29,15 @@ class IsarDbService extends DatabaseService {
 
   @override
   Future<void> init() async {
-    isar = await Isar.open([AppSettingsSchema]);
+    if (isar?.isOpen != true) {
+      isar = await Isar.open([AppSettingsSchema]);
+    }
+  }
+
+  Future<void> clear() async {
+    await isar?.writeTxn(() async {
+      await isar?.clear();
+    });
   }
 
   Future<AppSettings?> getAppSettings() {

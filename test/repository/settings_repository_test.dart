@@ -22,16 +22,16 @@ void main() {
     test('Should return correct default value', () async {
       final setting = await settingsRepository.get();
       expect(setting, isNotNull);
-      expect(setting.common?.notification, true);
-      expect(setting.display?.language, 'en');
-      expect(setting.display?.darkTheme, DarkThemeSetting.dark);
-      expect(setting.display?.fontsize, FontSizeSetting.small);
+      expect(setting.common.notification, true);
+      expect(setting.display.language, 'en');
+      expect(setting.display.darkTheme, DarkThemeSetting.dark);
+      expect(setting.display.fontsize, FontSizeSetting.small);
     });
 
     test('Should return correct value', () async {
       final expected = AppSettings(
-        common: CommonSettingsSectionData(notification: false),
-        display: DisplaySettingsSectionData(language: 'en'),
+        common: const CommonSettingsSectionData(notification: false),
+        display: DisplaySettingsSectionData.get(language: 'en'),
       );
 
       when(() => dbService.getAppSettings())
@@ -39,21 +39,21 @@ void main() {
 
       final setting = await settingsRepository.get();
       expect(setting, isNotNull);
-      expect(setting.common?.notification, false);
-      expect(setting.display?.language, 'en');
-      expect(setting.display?.darkTheme, DarkThemeSetting.dark);
-      expect(setting.display?.fontsize, FontSizeSetting.small);
+      expect(setting.common.notification, false);
+      expect(setting.display.language, 'en');
+      expect(setting.display.darkTheme, DarkThemeSetting.dark);
+      expect(setting.display.fontsize, FontSizeSetting.small);
     });
 
     test('Should send correct value to service', () async {
       final expected = AppSettings(
-        common: CommonSettingsSectionData(notification: false),
-        display: DisplaySettingsSectionData(language: 'en'),
+        common: const CommonSettingsSectionData(notification: false),
+        display: DisplaySettingsSectionData.get(language: 'en'),
       );
 
       final expected2 = AppSettings(
-        common: CommonSettingsSectionData(notification: false),
-        display: DisplaySettingsSectionData(language: 'en'),
+        common: const CommonSettingsSectionData(notification: false),
+        display: DisplaySettingsSectionData.get(language: 'vi'),
       );
 
       when(() => dbService.saveAppSettings(expected))
