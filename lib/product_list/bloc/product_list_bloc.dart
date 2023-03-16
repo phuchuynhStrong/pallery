@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pallery/app/routes.dart';
+import 'package:pallery/product_list/product_list.dart';
 
 class ProductListState {}
 
@@ -29,5 +30,9 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
     if (value == ProductListPopUpMenu.settings) {
       onSettingsPressed(context);
     }
+  }
+
+  void onProductItemPressed(BuildContext context, ProductItem item) {
+    context.goNamed(item.path);
   }
 }

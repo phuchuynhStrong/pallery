@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:pallery/mindfulness/view/mindfulness_view.dart';
 import 'package:pallery/model/setting/enums.dart';
 import 'package:pallery/onboarding/onboarding.dart';
 import 'package:pallery/product_list/product_list.dart';
@@ -25,6 +26,11 @@ final router = GoRouter(
       builder: (context, state) => const SettingsPage(),
     ),
     GoRoute(
+      path: RouteName.mindfulness.path,
+      name: RouteName.mindfulness.value,
+      builder: (context, state) => const MindfulnessPage(),
+    ),
+    GoRoute(
       path: RouteName.selectableSubsetting.path,
       name: RouteName.selectableSubsetting.value,
       builder: (context, state) {
@@ -42,7 +48,8 @@ enum RouteName {
   onboarding('onboarding'),
   productList('product_list'),
   settings('settings'),
-  selectableSubsetting('selectable_subsetting');
+  selectableSubsetting('selectable_subsetting'),
+  mindfulness('mindfulness');
 
   const RouteName(this.value);
   final String value;

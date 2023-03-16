@@ -10,6 +10,7 @@ environment:
 dependencies:
   animated_text_kit: ^4.2.2
   bloc: ^8.1.0
+  carousel_slider: ^4.2.1
   copy_with_extension: ^5.0.0
   envied: ^0.3.0
   equatable: ^2.0.5

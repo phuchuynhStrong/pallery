@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pallery/app/app.dart';
+import 'package:pallery/app/routes.dart';
 import 'package:pallery/l10n/l10n.dart';
 import 'package:pallery/product_list/bloc/bloc.dart';
 
 class ProductItem {
-  const ProductItem(this.name, this.gradient);
+  const ProductItem(this.name, this.gradient, this.path);
 
   final String name;
   final Gradient gradient;
+  final String path;
 }
 
-const List<ProductItem> _kProducts = [
+final List<ProductItem> _kProducts = [
   ProductItem(
-    'Pomotify',
+    'Mindfulness',
     CustomGradients.sanguine,
-  ),
-  ProductItem('Androidker Blog', CustomGradients.lusciousLime),
-  ProductItem(
-    'P-Editor',
-    CustomGradients.kashmir,
+    RouteName.mindfulness.value,
   )
 ];
 
@@ -109,6 +107,8 @@ class ProductListView extends StatelessWidget {
                   itemBuilder: (context, pos) {
                     return ProductListItemView(
                       item: _kProducts[pos],
+                      onPressed: (item) =>
+                          bloc.onProductItemPressed(context, item),
                     );
                   },
                   itemCount: _kProducts.length,
@@ -124,27 +124,31 @@ class ProductListView extends StatelessWidget {
 }
 
 class ProductListItemView extends StatelessWidget {
-  const ProductListItemView({super.key, required this.item});
+  const ProductListItemView({super.key, required this.item, this.onPressed});
+  final void Function(ProductItem)? onPressed;
   final ProductItem item;
 
   double get height => Dimens.lg * 5;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      padding: const EdgeInsets.only(
-        left: Dimens.lg,
-        top: Dimens.lg,
-      ),
-      decoration: BoxDecoration(
-        gradient: item.gradient,
-      ),
-      child: Text(
-        item.name,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
+    return InkWell(
+      onTap: () => onPressed?.call(item),
+      child: Container(
+        height: height,
+        padding: const EdgeInsets.only(
+          left: Dimens.lg,
+          top: Dimens.lg,
+        ),
+        decoration: BoxDecoration(
+          gradient: item.gradient,
+        ),
+        child: Text(
+          item.name,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
         ),
       ),
     );

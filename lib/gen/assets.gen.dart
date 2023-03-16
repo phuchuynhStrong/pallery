@@ -26,11 +26,15 @@ class $AssetsImagesGen {
   AssetGenImage get branding =>
       const AssetGenImage('assets/images/branding.png');
 
+  /// File path: assets/images/mindfulness_bg.webp
+  AssetGenImage get mindfulnessBg =>
+      const AssetGenImage('assets/images/mindfulness_bg.webp');
+
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [branding, splash];
+  List<AssetGenImage> get values => [branding, mindfulnessBg, splash];
 }
 
 class Assets {
