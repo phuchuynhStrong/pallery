@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pallery/app/app.dart';
+import 'package:pallery/gen/assets.gen.dart';
 import 'package:pallery/mindfulness/view/mindfulness_home_view.dart';
 import 'package:pallery/mindfulness/view/mindfulness_program_view.dart';
 import 'package:pallery/model/model.dart';
@@ -146,29 +147,53 @@ class _MindfulnessPageState extends State<MindfulnessPage>
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.white,
       ),
-      body: TabBarView(
-        controller: tabController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const MindfulnessHomeView(),
-          MindfulnessProgramView(
-            programs: [
-              MindfulnessProgram(
-                id: 1,
-                name: 'Reading',
-                iconCodePoint: Icons.book.codePoint,
-                fontFamily: 'MaterialIcons',
-              ),
-              MindfulnessProgram(
-                id: 2,
-                name: 'Bedtime',
-                iconCodePoint: Icons.bed.codePoint,
-                fontFamily: Icons.bed.fontFamily,
-              )
-            ],
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Assets.images.mindfulnessBg.path),
+            fit: BoxFit.cover,
           ),
-          const SizedBox(),
-        ],
+        ),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: 0.85,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                decoration: BoxDecoration(
+                  gradient: selectedTab == 1
+                      ? MindfulnessProgramView.gradient
+                      : MindfulnessPage.gradient,
+                ),
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+            TabBarView(
+              controller: tabController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                const MindfulnessHomeView(),
+                MindfulnessProgramView(
+                  programs: [
+                    MindfulnessProgram(
+                      id: 1,
+                      name: 'Reading',
+                      iconCodePoint: Icons.book.codePoint,
+                      fontFamily: 'MaterialIcons',
+                    ),
+                    MindfulnessProgram(
+                      id: 2,
+                      name: 'Bedtime',
+                      iconCodePoint: Icons.bed.codePoint,
+                      fontFamily: Icons.bed.fontFamily,
+                    )
+                  ],
+                ),
+                const SizedBox(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
