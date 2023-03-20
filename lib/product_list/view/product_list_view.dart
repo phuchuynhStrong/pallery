@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pallery/app/app.dart';
 import 'package:pallery/app/routes.dart';
 import 'package:pallery/l10n/l10n.dart';
+import 'package:pallery/mindfulness/mindfulness.dart';
 import 'package:pallery/product_list/bloc/bloc.dart';
 
 class ProductItem {
@@ -16,7 +17,7 @@ class ProductItem {
 final List<ProductItem> _kProducts = [
   ProductItem(
     'Mindfulness',
-    CustomGradients.sanguine,
+    MindfulnessPage.horizontalGradient,
     RouteName.mindfulness.value,
   )
 ];

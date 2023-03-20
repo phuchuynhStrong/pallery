@@ -33,6 +33,6 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   }
 
   void onProductItemPressed(BuildContext context, ProductItem item) {
-    context.goNamed(item.path);
+    context.pushNamed(item.path);
   }
 }

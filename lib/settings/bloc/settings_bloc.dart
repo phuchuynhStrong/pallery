@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pallery/app/logger.dart';
 import 'package:pallery/app/routes.dart';
 import 'package:pallery/l10n/l10n.dart';
 import 'package:pallery/model/setting/setting.dart';

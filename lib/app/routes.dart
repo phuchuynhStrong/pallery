@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pallery/mindfulness/view/mindfulness_view.dart';
 import 'package:pallery/model/setting/enums.dart';
@@ -28,7 +29,18 @@ final router = GoRouter(
     GoRoute(
       path: RouteName.mindfulness.path,
       name: RouteName.mindfulness.value,
-      builder: (context, state) => const MindfulnessPage(),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        child: const MindfulnessPage(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: ScaleTransition(
+              scale: animation,
+              child: child,
+            ),
+          );
+        },
+      ),
     ),
     GoRoute(
       path: RouteName.selectableSubsetting.path,

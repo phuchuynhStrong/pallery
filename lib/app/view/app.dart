@@ -14,9 +14,9 @@ class App extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF13B9FF),
+          backgroundColor: kPrimaryColor,
         ),
         textTheme: GoogleFonts.montserratTextTheme(),
-        backgroundColor: kPrimaryColor,
         scaffoldBackgroundColor: kPrimaryColor,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
