@@ -30,6 +30,8 @@ dependencies:
   rive: ^0.10.0
   sentry_flutter: ^6.18.2
   settings_ui: ^2.0.2
+  simple_animations: ^5.0.0+3
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   bloc_test: ^9.1.0
